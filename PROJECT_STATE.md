@@ -33,17 +33,16 @@
 - [x] Configure Azure Key Vault and store Event Hubs SAS policies
 - [x] Provision Event Hubs namespace & `flight-telemetry` event hub
 - [x] Deploy Azure Databricks Premium workspace and configure Azure Access Connector (managed identity)
-- [ ] Configure OpenSky API producer / telemetry simulation pipeline to Event Hubs
-- [ ] Establish secure CI/CD service principal or GitHub Actions OIDC connection
+- [x] Configure OpenSky API producer / telemetry simulation pipeline to Event Hubs (`01_flight_telemetry_producer`)
 
 ### Phase 2: Bronze Layer (Streaming, Batch & Data Quarantine)
 - [x] Configure Unity Catalog 3-level namespace (`aircargo_dev`), external locations & volumes
 - [x] Provision FinOps-optimized compute (`cluster-aircargo-dev`, Single Node, 15m idle shutdown)
 - [x] Validate end-to-end connectivity (Key Vault secrets scope + Volume read/write)
-- [ ] Implement Spark Structured Streaming from Event Hubs using `Trigger.AvailableNow` (cost-optimized micro-batch)
+- [x] Implement Spark Structured Streaming from Event Hubs using `Trigger.AvailableNow` (cost-optimized micro-batch)
 - [ ] Ingest static/batch reference datasets into `/Volumes/aircargo_dev/landing/raw_files/` (airports, weather, synthetic cargo manifests)
-- [ ] Persist append-only Delta tables in `aircargo_dev.bronze` with ingestion audit metadata (`_ingest_timestamp`, `_source_file`)
-- [ ] Build Quarantine table pattern for malformed JSON payloads and schema drift
+- [x] Persist append-only Delta tables in `aircargo_dev.bronze` with ingestion audit metadata (`_ingest_timestamp`, `_source_file`)
+- [x] Build Quarantine table pattern for malformed JSON payloads and schema drift
 
 ### Phase 3: Silver Layer (Cleansing, H3 Indexing, SCD & PII Governance)
 - [ ] Parse and unpack nested JSON payloads (`from_json`, array exploding, schema enforcement)
@@ -53,6 +52,7 @@
 - [ ] Enrich streaming telemetry with reference airport coordinates and ambient weather dimensions
 
 ### Phase 4: Code Modularization, Unit Testing & CI/CD
+- [ ] Establish secure CI/CD service principal or GitHub Actions OIDC connection to Azure
 - [ ] Refactor PySpark transformation logic from notebooks into modular Python packages (`src/`)
 - [ ] Write unit tests using `pytest` and `chispa` (DataFrame assertions)
 - [ ] Configure GitHub Actions workflow: automated linting (`black`, `flake8`), static checks, and unit test runner
@@ -75,5 +75,5 @@
 ### Phase 7: Analytics Serving, Power BI & Portfolio Documentation
 - [ ] Expose Gold Delta tables via Databricks SQL Serverless Warehouse
 - [ ] Connect Power BI (or build Databricks native SQL Dashboards) for executive & operational tracking
-- [ ] Generate architectural architecture diagrams (data flow, network boundaries, medallion transitions)
+- [ ] Generate architectural diagrams (data flow, network boundaries, medallion transitions)
 - [ ] Complete comprehensive technical `README.md` highlighting architecture decisions, FinOps savings, and engineering tradeoffs
