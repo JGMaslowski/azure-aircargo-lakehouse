@@ -40,7 +40,7 @@
 - [x] Provision FinOps-optimized compute (`cluster-aircargo-dev`, Single Node, 15m idle shutdown)
 - [x] Validate end-to-end connectivity (Key Vault secrets scope + Volume read/write)
 - [x] Implement Spark Structured Streaming from Event Hubs using `Trigger.AvailableNow` (cost-optimized micro-batch)
-- [ ] Ingest static/batch reference datasets into `/Volumes/aircargo_dev/landing/raw_files/` (airports, weather, synthetic cargo manifests)
+- [x] Ingest static/batch reference datasets into `/Volumes/aircargo_dev/landing/raw_files/` (airports, weather, synthetic cargo manifests)
 - [x] Persist append-only Delta tables in `aircargo_dev.bronze` with ingestion audit metadata (`_ingest_timestamp`, `_source_file`)
 - [x] Build Quarantine table pattern for malformed JSON payloads and schema drift
 
